@@ -1,1 +1,59 @@
+# Data Warehouse Analytics Project
 
+## Business Objective
+To provide actionable insights from sales data by:
+- Identifying top-performing products and customers
+- Analyzing sales trends over time
+- Segmenting customers for targeted marketing
+- Evaluating product performance across categories
+
+## Technical Scope
+- **Data Exploration**: 50+ analytical queries
+- **Metrics Calculated**: 20+ KPIs
+- **Analytical Methods**:
+  - Descriptive analytics
+  - Time-series analysis
+  - Customer/product segmentation
+  - Part-to-whole relationships
+- **Output**: 2 production-ready views for BI integration
+
+## Data Model
+```mermaid
+erDiagram
+    FACT_SALES ||--o{ DIM_PRODUCTS : contains
+    FACT_SALES ||--o{ DIM_CUSTOMERS : references
+    DIM_PRODUCTS {
+        string product_key PK
+        string product_name
+        string category
+        string subcategory
+        decimal cost
+    }
+    DIM_CUSTOMERS {
+        string customer_key PK
+        string first_name
+        string last_name
+        date birthdate
+        string gender
+        string country
+    }
+    FACT_SALES {
+        string order_number
+        date order_date
+        decimal sales_amount
+        int quantity
+        decimal price
+    }
+
+===================================================================
+/documentation
+  ├── OVERVIEW.md
+  ├── TECHNICAL_SPEC.md
+  ├── USER_GUIDE.md
+  ├── API_DOCS.md
+  ├── MAINTENANCE.md
+  └── BUSINESS_IMPACT.md
+/scripts
+  ├── exploratory_analysis.sql
+  ├── customer_analytics.sql
+  └── product_analytics.sql
